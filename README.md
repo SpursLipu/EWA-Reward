@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2606.19990">📄 Paper</a> |
   <a href="#quick-start">🚀 Quick Start</a> |
+  <a href="#demo-videos">🎬 Demo</a> |
   <a href="#api">🧩 API</a> |
   <a href="#citation">📝 Citation</a>
 </p>
@@ -109,14 +110,15 @@ Example streamed response:
 
 ## Demo Videos
 
-The repository includes four small demo rollouts under `examples/`:
+The repository includes five small demo rollouts under `examples/`:
 
 | Demo | Preview | Reward output |
 | --- | --- | --- |
 | Cloth manipulation | [<img src="assets/demos/demo_01.gif" width="280" alt="Cloth manipulation demo preview">](examples/demo_01/video_1.mp4)<br>[MP4](examples/demo_01/video_1.mp4) | `{"index": 0, "score": 1.0, "status": "success"}` |
 | Refrigerator drawer opening | [<img src="assets/demos/demo_02.gif" width="280" alt="Refrigerator drawer opening demo preview">](examples/demo_02/video_1.mp4)<br>[MP4](examples/demo_02/video_1.mp4) | `{"index": 0, "score": 1.0, "status": "success"}` |
-| Green cube placing | [<img src="assets/demos/demo_03.gif" width="280" alt="Green cube placing demo preview">](examples/demo_03/video_0.mp4)<br>[MP4](examples/demo_03/video_0.mp4) | `{"index": 0, "score": 0.384, "status": "success"}` |
-| Basket handle grasping | [<img src="assets/demos/demo_04.gif" width="280" alt="Basket handle grasping demo preview">](examples/demo_04/video_0.mp4)<br>[MP4](examples/demo_04/video_0.mp4) | `{"index": 0, "score": 0.7, "status": "success"}` |
+| Basket handle grasping | [<img src="assets/demos/demo_03.gif" width="280" alt="Basket handle grasping demo preview">](examples/demo_03/video_0.mp4)<br>[MP4](examples/demo_03/video_0.mp4) | `{"index": 0, "score": 0.7, "status": "success"}` |
+| Green cube placing | [<img src="assets/demos/demo_04.gif" width="280" alt="Green cube placing demo preview">](examples/demo_04/video_0.mp4)<br>[MP4](examples/demo_04/video_0.mp4) | `{"index": 0, "score": 0.384, "status": "success"}` |
+| Failed box relocation | [<img src="assets/demos/demo_05.gif" width="280" alt="Failed box relocation demo preview">](examples/demo_05/video_0.mp4)<br>[MP4](examples/demo_05/video_0.mp4) | `{"index": 0, "score": 0, "status": "success"}` |
 
 Prompt and request files:
 
@@ -124,8 +126,9 @@ Prompt and request files:
 | --- | --- | --- |
 | Cloth manipulation | `examples/demo_01/prompt.txt` | `examples/demo_01/request.json` |
 | Refrigerator drawer opening | `examples/demo_02/prompt.txt` | `examples/demo_02/request.json` |
-| Green cube placing | `examples/demo_03/prompt.txt` | `examples/demo_03/request.json` |
-| Basket handle grasping | `examples/demo_04/prompt.txt` | `examples/demo_04/request.json` |
+| Basket handle grasping | `examples/demo_03/prompt.txt` | `examples/demo_03/request.json` |
+| Green cube placing | `examples/demo_04/prompt.txt` | `examples/demo_04/request.json` |
+| Failed box relocation | `examples/demo_05/prompt.txt` | `examples/demo_05/request.json` |
 
 The demo results above were verified with the reward model served by vLLM using
 `--max-model-len 65536`, which is required by the 64-frame physics/motion reward
@@ -164,6 +167,10 @@ curl -N http://127.0.0.1:7024/eval_video \
 curl -N http://127.0.0.1:7024/eval_video \
   -H "Content-Type: application/json" \
   -d @examples/demo_04/request.json
+
+curl -N http://127.0.0.1:7024/eval_video \
+  -H "Content-Type: application/json" \
+  -d @examples/demo_05/request.json
 ```
 
 ## Configuration
