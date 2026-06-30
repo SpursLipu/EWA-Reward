@@ -37,20 +37,6 @@ EWA-Reward centers on agentic visual reward judging:
 - Standalone final task-completion reward for process and outcome consistency.
 - OpenAI-compatible backend support, including vLLM-style chat completions.
 
-Current scoring:
-
-```text
-total_score = (
-  vision_score * 0.2
-  + physics_score * 0.3
-  + instruction_score * 0.2
-  + task_score * 0.3
-) * planning_weight
-```
-
-The planning gate returns 0 for `Very Poor`, uses `planning_weight = 0.6` for
-`Moderate Issues`, and uses `planning_weight = 1.0` for `Excellent`.
-
 ## TODO
 
 - Integrate more model-based rewards for embodied world-model evaluation.
@@ -125,12 +111,12 @@ Example streamed response:
 
 The repository includes four small demo rollouts under `examples/`:
 
-| Demo | Video | Reward output |
+| Demo | Preview | Reward output |
 | --- | --- | --- |
-| Cloth manipulation | <video src="examples/demo_01/video_1.mp4" width="280" controls></video> | `{"index": 0, "score": 1.0, "status": "success"}` |
-| Refrigerator drawer opening | <video src="examples/demo_02/video_1.mp4" width="280" controls></video> | `{"index": 0, "score": 1.0, "status": "success"}` |
-| Green cube placing | <video src="examples/demo_03/video_0.mp4" width="280" controls></video> | `{"index": 0, "score": 0.384, "status": "success"}` |
-| Basket handle grasping | <video src="examples/demo_04/video_0.mp4" width="280" controls></video> | `{"index": 0, "score": 0.7, "status": "success"}` |
+| Cloth manipulation | [<img src="assets/demos/demo_01.gif" width="280" alt="Cloth manipulation demo preview">](examples/demo_01/video_1.mp4)<br>[MP4](examples/demo_01/video_1.mp4) | `{"index": 0, "score": 1.0, "status": "success"}` |
+| Refrigerator drawer opening | [<img src="assets/demos/demo_02.gif" width="280" alt="Refrigerator drawer opening demo preview">](examples/demo_02/video_1.mp4)<br>[MP4](examples/demo_02/video_1.mp4) | `{"index": 0, "score": 1.0, "status": "success"}` |
+| Green cube placing | [<img src="assets/demos/demo_03.gif" width="280" alt="Green cube placing demo preview">](examples/demo_03/video_0.mp4)<br>[MP4](examples/demo_03/video_0.mp4) | `{"index": 0, "score": 0.384, "status": "success"}` |
+| Basket handle grasping | [<img src="assets/demos/demo_04.gif" width="280" alt="Basket handle grasping demo preview">](examples/demo_04/video_0.mp4)<br>[MP4](examples/demo_04/video_0.mp4) | `{"index": 0, "score": 0.7, "status": "success"}` |
 
 Prompt and request files:
 
