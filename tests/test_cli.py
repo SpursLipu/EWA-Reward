@@ -1,0 +1,14 @@
+import pytest
+
+from ewa_reward import __version__
+from ewa_reward.cli import main
+
+
+def test_cli_version(capsys):
+    """中文：验证 CLI 能正确打印当前包版本。
+English: Verify that the CLI prints the current package version."""
+    with pytest.raises(SystemExit) as exc_info:
+        main(["--version"])
+
+    assert exc_info.value.code == 0
+    assert f"ewa-reward {__version__}" in capsys.readouterr().out
